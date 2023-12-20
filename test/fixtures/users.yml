@@ -5,9 +5,11 @@ one:
   email: MyString
   password_digest: MyString
   profile_picture: MyString
+  group_id: 1
 
 two:
   username: MyString
   email: MyString
   password_digest: MyString
   profile_picture: MyString
+  group_id: 1
