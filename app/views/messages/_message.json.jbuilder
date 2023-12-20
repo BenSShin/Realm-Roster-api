@@ -1,2 +1,4 @@
-json.extract! message, :id, :created_at, :updated_at
-json.url message_url(message, format: :json)
+json.id message.id
+json.user_id message.user_id
+json.group_id message.group_id
+json.content message.content

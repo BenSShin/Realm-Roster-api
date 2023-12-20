@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   post "/groups" => "groups#create"
   patch "/groups" => "groups#update"
   delete "/groups" => "groups#destroy"
+
+  # messages routes
+  get "/messages" => "messages#index"
+  get "/messages/:id" => "messages#show"
+  post "/messages" => "messages#create"
+  patch "/messages" => "messages#update"
+  delete "/messages" => "messages#destroy"
 end
