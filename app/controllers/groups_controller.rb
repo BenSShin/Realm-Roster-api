@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  # before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     @groups = Group.all
@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find_by(id: params[:id])
+    @group = Group.find_by(id: current_user.group_id)
     @group.update(
       name: params[:name] || @group.name,
       meetup: params[:meetup] || @group.meetup,
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find_by(id: params[:id])
+    @group = Group.find_by(id: current_user.group_id)
     @group.destroy
     render json: { message: "Group has been destroyed." }
   end

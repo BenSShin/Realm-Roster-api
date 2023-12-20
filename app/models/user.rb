@@ -3,5 +3,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password_confirmation, presence: true
 
-  belongs_to :group
+  belongs_to :group, optional: true
 end
