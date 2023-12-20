@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show, :create]
+  before_action :authenticate_user, except: [:index, :create]
 
   def index
     @users = User.all
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(current_user.id)
     render :show
   end
 
