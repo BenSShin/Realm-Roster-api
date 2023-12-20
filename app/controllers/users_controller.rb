@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show, :create]
+
   def index
     @users = User.all
     render :index
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
     @user.update(
       username: params[:username] || @user.username,
       email: params[:email] || @user.email,
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
     @user.destroy
     render json: { message: "User has been deleted" }
   end
