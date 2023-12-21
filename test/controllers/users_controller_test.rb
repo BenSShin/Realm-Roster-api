@@ -32,7 +32,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "update" do
-    patch "/users/#{User.first.id}.json", params: { username: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
+    patch "/users/#{@user.id}.json", params: { username: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -41,7 +41,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy" do
     assert_difference "User.count", -1 do
-      delete "/users/#{User.first.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
+      delete "/users/#{@user.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
       assert_response 200
     end
   end
