@@ -30,4 +30,21 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
       assert_response 200
     end
   end
+
+  test "update" do
+    patch "/groups/#{Group.first.id}.json", params: { name: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
+    assert_response 200
+
+    data = JSON.parse(response.body)
+    assert_equal "updated", data["name"]
+  end
+
+  test "destroy" do
+    assert_difference "Group.count", -1 do
+      delete "/groups/#{Group.first.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
+      assert_response 200
+    end
+    delete "/groups/#{Group.first.id}.json"
+    assert_response 401
+  end
 end
