@@ -2,12 +2,12 @@ class GroupsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @groups = Group.all
+    @groups = Group.includes(:users, :messages).all
     render :index
   end
 
   def show
-    @group = Group.find_by(id: params[:id])
+    @group = Group.includes(:users, :messages).find_by(id: params[:id])
     render :show
   end
 

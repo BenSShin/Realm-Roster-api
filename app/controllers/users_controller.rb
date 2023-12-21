@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: [:index, :create]
+  before_action :authenticate_user, except: [:index, :create, :update]
 
   def index
     @users = User.all
@@ -39,7 +39,11 @@ class UsersController < ApplicationController
       profile_picture: params[:profile_picture] || @user.profile_picture,
       group_id: params[:group_id] || @user.group_id,
     )
-    render :show
+    if @user.save
+      render :show
+    else
+      render json: { errors: @user.errors.full_messages }, status: :bad_request
+    end
   end
 
   def destroy
