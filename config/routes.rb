@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get "/users" => "users#index"
   get "/users/:id" => "users#show"
   post "/users" => "users#create"
-  patch "/users" => "users#update"
-  delete "/users" => "users#destroy"
+  patch "/users/:id" => "users#update"
+  delete "/users/:id" => "users#destroy"
 
   # sessions routes
   post "/sessions" => "sessions#create"
@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   get "/groups" => "groups#index"
   get "/groups/:id" => "groups#show"
   post "/groups" => "groups#create"
-  patch "/groups" => "groups#update"
-  delete "/groups" => "groups#destroy"
+  patch "/groups/:id" => "groups#update"
+  delete "/groups/:id" => "groups#destroy"
 
   # messages routes
   get "/messages" => "messages#index"
   get "/messages/:id" => "messages#show"
   post "/messages" => "messages#create"
-  patch "/messages" => "messages#update"
-  delete "/messages" => "messages#destroy"
+  patch "/messages/:id" => "messages#update"
+  delete "/messages/:id" => "messages#destroy"
 end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(current_user.id)
+    @user = User.find_by(id: params[:id])
     render :show
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: current_user.id)
+    @user = User.find_by(id: params[:id])
     @user.update(
       username: params[:username] || @user.username,
       email: params[:email] || @user.email,
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: current_user.id)
+    @user = User.find_by(id: params[:id])
     @user.destroy
     render json: { message: "User has been deleted" }
   end
