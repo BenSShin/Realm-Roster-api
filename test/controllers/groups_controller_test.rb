@@ -4,6 +4,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = User.create(username: "test", email: "test@test.com", password: "test", password_confirmation: "test")
     post "/sessions.json", params: { email: "test@test.com", password: "test" }
+    
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end

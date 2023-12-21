@@ -2,7 +2,12 @@ class MessagesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @messages = Message.where(group_id: current_user.group_id)
+    if params[:group_id]
+      @messages = Message.where(group_id: (params[:group_id]))
+    else
+      @messages = Message.where(user_id: current_user.id)
+    end
+    @messages = @messages.order("created_at DESC")
     render :index
   end
 
