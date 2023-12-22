@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # groups routes
   get "/groups" => "groups#index"
-  get "/groups/:id" => "groups#show"
+  get "/group" => "groups#show"
   post "/groups" => "groups#create"
   patch "/groups/:id" => "groups#update"
   delete "/groups/:id" => "groups#destroy"

@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.includes(:users, :messages).find_by(id: params[:id])
+    @group = Group.includes(:users, :messages).find_by(id: current_user.group_id.to_s)
     render :show
   end
 
