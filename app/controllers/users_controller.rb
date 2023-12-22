@@ -32,21 +32,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:id].to_i == current_user.id
-      @user = User.find_by(id: params[:id])
-      @user.update(
-        username: params[:username] || @user.username,
-        email: params[:email] || @user.email,
-        profile_picture: params[:profile_picture] || @user.profile_picture,
-        group_id: params[:group_id] || @user.group_id,
-      )
-      if @user.save
-        render :show
-      else
-        render json: { errors: @user.errors.full_messages }, status: :bad_request
-      end
+    @user = User.find_by(id: current_user.id)
+    @user.update(
+      username: params[:username] || @user.username,
+      email: params[:email] || @user.email,
+      profile_picture: params[:profile_picture] || @user.profile_picture,
+      group_id: params[:group_id] || @user.group_id,
+    )
+    if @user.save
+      render :show
     else
-      render json: { error: "You can only edit your account." }
+      render json: { errors: @user.errors.full_messages }, status: :bad_request
     end
   end
 
