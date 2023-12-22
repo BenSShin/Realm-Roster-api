@@ -27,20 +27,20 @@ class MessagesController < ApplicationController
 
   def update
     @message = Message.find_by(id: params[:id])
-    # if @message.user_id == current_user.id
-    @message.update(
-      user_id: current_user.id,
-      group_id: current_user.group_id,
-      content: params[:content] || @message.content,
-    )
-    if @message.save
-      render :show
+    if @message.user_id == current_user.id
+      @message.update(
+        user_id: current_user.id,
+        group_id: current_user.group_id,
+        content: params[:content] || @message.content,
+      )
+      if @message.save
+        render :show
+      else
+        render json: { errors: @user.errors.full_messages }, status: :bad_request
+      end
     else
-      render json: { errors: @user.errors.full_messages }, status: :bad_request
+      render json: { error: "You can only edit your messages." }
     end
-    # else
-    #   render json: { error: "You can only edit your messages." }
-    # end
   end
 
   def destroy
