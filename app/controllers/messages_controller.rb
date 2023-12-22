@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     else
       @messages = Message.where(user_id: current_user.id)
     end
-    @messages = @messages.order("created_at DESC")
+    @messages = @messages
     render :index
   end
 
