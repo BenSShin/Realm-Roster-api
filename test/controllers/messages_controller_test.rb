@@ -22,7 +22,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "user_id", "group_id", "content", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "user_id", "username", "group_id", "content", "created_at", "updated_at"], data.keys
   end
 
   test "create" do

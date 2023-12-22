@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   belongs_to :group, optional: true
+  has_many :messages
 end

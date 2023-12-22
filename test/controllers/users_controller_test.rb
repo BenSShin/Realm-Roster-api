@@ -17,11 +17,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get "/users/#{User.first.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }
+    get "/users.json", headers: { "Authorization" => "Bearer #{@jwt}" }
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "username", "email", "profile_picture", "group_id", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "username", "email", "profile_picture", "group_id", "created_at", "updated_at"], data[0].keys
   end
 
   test "create" do

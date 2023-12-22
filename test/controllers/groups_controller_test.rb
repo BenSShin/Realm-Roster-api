@@ -4,7 +4,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = User.create(username: "test", email: "test@test.com", password: "test", password_confirmation: "test")
     post "/sessions.json", params: { email: "test@test.com", password: "test" }
-    
+
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end
@@ -18,11 +18,11 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get "/groups/#{Group.first.id}.json"
+    get "/groups.json"
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "users", "messages", "meetup", "locatin", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "name", "users", "messages", "meetup", "location", "created_at", "updated_at"], data[0].keys
   end
 
   test "create" do
