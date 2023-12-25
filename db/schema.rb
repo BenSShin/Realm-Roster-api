@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_214326) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_25_172144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.string "name"
+    t.string "image_url"
+    t.text "description"
+    t.string "race"
+    t.integer "level"
+    t.string "class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -26,6 +39,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_214326) do
     t.integer "user_id"
     t.integer "group_id"
     t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spells", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "higher_level"
+    t.string "range"
+    t.text "components", default: [], array: true
+    t.string "material"
+    t.boolean "ritual"
+    t.string "duration"
+    t.boolean "concentration"
+    t.string "casting_time"
+    t.string "level"
+    t.string "dc_type"
+    t.string "attack_type"
+    t.string "damage_type"
+    t.string "school"
+    t.string "classes", default: [], array: true
+    t.string "subclasses", array: true
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
