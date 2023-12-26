@@ -32,7 +32,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "update" do
-    patch "/users/#{@user.id}.json", params: { username: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
+    patch "/user.json", params: { username: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
     assert_response 200
 
     data = JSON.parse(response.body)

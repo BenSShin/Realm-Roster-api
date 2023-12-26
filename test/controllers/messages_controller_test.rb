@@ -5,6 +5,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     group = Group.create(name: "test", meetup: "2024-1-1 1:1:1", location: "test")
     @user = User.create(username: "test", email: "test@test.com", password: "test", password_confirmation: "test", group_id: group.id)
     post "/sessions.json", params: { email: "test@test.com", password: "test" }
+    @message = Message.create(user_id: @user.id, group_id: group.id, content: "test")
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end
@@ -14,15 +15,15 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal Message.where(user_id: User.first.id).count, data.length
+    assert_equal Message.where(user_id: @user.id).count, data.length
   end
 
   test "show" do
-    get "/messages/#{Message.first.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
+    get "/messages/#{@message.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "user_id", "username", "group_id", "content", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "user_id", "group_id", "username", "content", "created_at", "updated_at"], data.keys
   end
 
   test "create" do
@@ -35,7 +36,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "update" do
-    patch "/messages/#{Message.first.id}.json", params: { content: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
+    patch "/messages/#{@message.id}.json", params: { content: "updated" }, headers: { Authorization: "Bearer #{@jwt}" }
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -44,7 +45,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy" do
     assert_difference "Message.count", -1 do
-      delete "/messages/#{Message.first.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
+      delete "/messages/#{@message.id}.json", headers: { Authorization: "Bearer #{@jwt}" }
       assert_response 200
     end
   end
