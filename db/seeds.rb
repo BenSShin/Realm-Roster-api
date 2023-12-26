@@ -18,9 +18,9 @@ spellarray.each do |spell_index|
   url = spell_index["url"]
   response = HTTP.get("https://www.dnd5eapi.co#{url}")
   data = JSON.parse(response)
-  components = ""
+  components = []
   data["components"].each do |c|
-    components += c
+    components << c
   end
   if data["dc"]
     dc_type = data["dc"]["dc_type"]["name"]

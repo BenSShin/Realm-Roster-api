@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 
   # character routes
   get "/characters" => "character#index"
+  get "/characters/:id" => "character#show"
+  post "/characters" => "character#create"
 end
