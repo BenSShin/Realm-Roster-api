@@ -6,6 +6,6 @@ json.image_url character.image_url
 json.description character.description
 json.race character.race
 json.level character.level
-json.class character.class
+json.character_class character.character_class
 json.created_at character.created_at
 json.updated_at character.updated_at

@@ -20,7 +20,7 @@ class CharactersController < ApplicationController
       description: params[:description],
       race: params[:race],
       level: params[:level],
-      class: params[:class],
+      character_class: params[:character_class],
     )
     render :show
   end
@@ -35,7 +35,7 @@ class CharactersController < ApplicationController
       description: params[:description] || @character.description,
       race: params[:race] || @character.race,
       level: params[:level] || @character.level,
-      class: params[:class] || @character.class,
+      character_class: params[:character_class] || @character.character_class,
     )
     render :show
   end

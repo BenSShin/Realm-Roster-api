@@ -2,13 +2,20 @@
 group = Group.create!([{ name: "roll" }, { name: "nat20" }])
 # user seed
 user = User.create!([
-  { username: "Ben", email: "ben@gmail.com", password: "test", password_confirmation: "test", group_id: 1 },
-  { username: "hi", email: "hi@gmail.com", password: "test", password_confirmation: "test", group_id: 1 },
-  { username: "alex", email: "alex@gmail.com", password: "test", password_confirmation: "test", group_id: 1 },
-  { username: "test", email: "test@gmail.com", password: "test", password_confirmation: "test", group_id: 1 },
+  { username: "Ben", email: "ben@gmail.com", password: "test", password_confirmation: "test" },
+  { username: "Jake", email: "jake@gmail.com", password: "test", password_confirmation: "test" },
+  { username: "alex", email: "alex@gmail.com", password: "test", password_confirmation: "test" },
+  { username: "test", email: "test@gmail.com", password: "test", password_confirmation: "test" },
 ])
 # message seed
 message = Message.create!([{ group_id: 1, user_id: 2, content: "hello" }, { group_id: 1, user_id: 1, content: "hello" }, { group_id: 1, user_id: 2, content: "How you doing?" }, { group_id: 1, user_id: 1, content: "Good" }])
+# character seeds
+character = Character.create!([
+  { user_id: 1, group_id: 1, name: "bob", description: "it's bob", race: "dwarf", level: 1, character_class: "paladin" },
+  { user_id: 1, group_id: 2, name: "Gandalf", description: "it's Gandlaf", race: "human", level: 1, character_class: "wizard" },
+  { user_id: 2, group_id: 1, name: "Joe", description: "it's Joe", race: "elf", level: 1, character_class: "rogue" },
+  { user_id: 2, group_id: 2, name: "Hulk", description: "it's Hulk", race: "tiefling", level: 1, character_class: "barbarian" },
+])
 
 # spell seed from dnd5eapi
 response = HTTP.get("https://www.dnd5eapi.co/api/spells")

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # users routes
-  get "/users" => "users#index"
-  get "/user" => "users#show"
+  # get "/users" => "users#index"
+  # get "/user" => "users#show"
   post "/users" => "users#create"
   patch "/user" => "users#update"
   delete "/users/:id" => "users#destroy"
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # groups routes
   get "/groups" => "groups#index"
-  get "/group" => "groups#show"
+  get "/groups/:id" => "groups#show"
   post "/groups" => "groups#create"
   patch "/groups/:id" => "groups#update"
   delete "/groups/:id" => "groups#destroy"
@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   get "/spells/:id" => "spells#show"
 
   # character routes
-  get "/characters" => "character#index"
-  get "/characters/:id" => "character#show"
-  post "/characters" => "character#create"
-  patch "/characters/:id" => "character#update"
-  delete "/characters/:id" => "character#destroy"
+  get "/characters" => "characters#index"
+  get "/characters/:id" => "characters#show"
+  post "/characters" => "characters#create"
+  patch "/characters/:id" => "characters#update"
+  delete "/characters/:id" => "characters#destroy"
 end
