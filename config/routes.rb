@@ -22,4 +22,8 @@ Rails.application.routes.draw do
   post "/messages" => "messages#create"
   patch "/messages/:id" => "messages#update"
   delete "/messages/:id" => "messages#destroy"
+
+  # spell routes
+  get "/spells" => "spells#index"
+  get "/spells/:id" => "spells#show"
 end
