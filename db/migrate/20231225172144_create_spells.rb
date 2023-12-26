@@ -17,7 +17,7 @@ class CreateSpells < ActiveRecord::Migration[7.0]
       t.string :damage_type
       t.string :school
       t.string :classes, array: true, default: []
-      t.string :subclasses, array: true, defualt: []
+      t.string :subclasses, array: true, default: []
       t.string :url
 
       t.timestamps

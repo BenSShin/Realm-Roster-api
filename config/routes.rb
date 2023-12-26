@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   # spell routes
   get "/spells" => "spells#index"
   get "/spells/:id" => "spells#show"
+
+  # character routes
+  get "/characters" => "character#index"
 end

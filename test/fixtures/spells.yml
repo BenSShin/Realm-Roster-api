@@ -5,7 +5,9 @@ one:
   description: MyText
   higher_level: MyString
   range: MyString
-  components: MyText
+  components:
+    - a
+    - b
   material: MyString
   ritual: false
   duration: MyString
@@ -15,16 +17,23 @@ one:
   attack_type: MyString
   damage_type: MyString
   school: MyString
-  classes: MyString
-  subclasses: MyString
+  classes:
+    - class1
+    - class2
+  subclasses:
+    - subclass1
+    - subclass2
   url: MyString
+  area_of_effect: MyText
 
 two:
   name: MyString
   description: MyText
   higher_level: MyString
   range: MyString
-  components: MyText
+  components:
+    - a
+    - b
   material: MyString
   ritual: false
   duration: MyString
@@ -34,6 +43,11 @@ two:
   attack_type: MyString
   damage_type: MyString
   school: MyString
-  classes: MyString
-  subclasses: MyString
+  classes:
+    - class1
+    - class2
+  subclasses:
+    - subclass1
+    - subclass2
   url: MyString
+  area_of_effect: MyText

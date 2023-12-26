@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_001352) do
     t.string "damage_type"
     t.string "school"
     t.string "classes", default: [], array: true
-    t.string "subclasses", array: true
+    t.string "subclasses", default: [], array: true
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
