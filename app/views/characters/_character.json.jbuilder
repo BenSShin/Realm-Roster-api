@@ -1,0 +1,11 @@
+json.id character.id
+json.user_id character.user_id
+json.group_id character.group_id
+json.name character.name
+json.image_url character.image_url
+json.description character.description
+json.race character.race
+json.level character.level
+json.class character.class
+json.created_at character.created_at
+json.updated_at character.updated_at
