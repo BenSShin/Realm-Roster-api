@@ -1,6 +1,7 @@
 json.id character.id
 json.user_id character.user_id
 json.group_id character.group_id
+json.group character.group.name
 json.name character.name
 json.image_url character.image_url
 json.description character.description
