@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.create(
       user_id: current_user.id,
-      group_id: current_user.group_id,
+      group_id: params[:group_id],
       content: params[:content],
     )
     render :show
@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
     @message = Message.find_by(id: params[:id], user_id: current_user.id)
     @message.update(
       user_id: current_user.id,
-      group_id: current_user.group_id,
+      group_id: params[:group_id],
       content: params[:content] || @message.content,
     )
     if @message.save

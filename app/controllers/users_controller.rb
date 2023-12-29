@@ -19,7 +19,6 @@ class UsersController < ApplicationController
         profile_picture: params[:profile_picture],
         password: params[:password],
         password_confirmation: params[:password_confirmation],
-        group_id: params[:group_id],
       )
       if @user.save
         render :show
@@ -37,7 +36,6 @@ class UsersController < ApplicationController
       username: params[:username] || @user.username,
       email: params[:email] || @user.email,
       profile_picture: params[:profile_picture] || @user.profile_picture,
-      group_id: params[:group_id] || @user.group_id,
     )
     if @user.save
       render :show

@@ -14,7 +14,6 @@ class CharactersController < ApplicationController
   def create
     @character = Character.create(
       user_id: current_user.id,
-      group_id: params[:group_id],
       name: params[:name],
       image_url: params[:image_url],
       description: params[:description],
