@@ -14,8 +14,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(
       name: params[:name],
-      meetup: params[:meetup],
-      location: params[:location],
+      description: params[:description],
     )
     if @group.save
       render :show
@@ -28,8 +27,7 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     @group.update(
       name: params[:name] || @group.name,
-      meetup: params[:meetup] || @group.meetup,
-      location: params[:location] || @group.location,
+      description: params[:description] || @group.meetup,
     )
     render :show
   end
