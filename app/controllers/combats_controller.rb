@@ -2,7 +2,11 @@ class CombatsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @combats = Combat.where(user_id: current_user.id, tab_id: params[:tab_id])
+    if params[:tab_id]
+      @combats = Combat.where(user_id: current_user.id, tab_id: params[:tab_id])
+    else
+      @combats = Combat.where(user_id: current_user.id)
+    end
     render :index
   end
 
@@ -20,10 +24,10 @@ class CombatsController < ApplicationController
       health: params[:health],
       status: params[:status],
     )
-    if @group.save
+    if @combat.save
       render :show
     else
-      render json: { errors: @group.errors.full_messages }, status: :bad_request
+      render json: { errors: @combat.errors.full_messages }, status: :bad_request
     end
   end
 
@@ -37,10 +41,10 @@ class CombatsController < ApplicationController
       health: params[:health] || @combat.health,
       status: params[:status] || @combat.status,
     )
-    if @group.save
+    if @combat.save
       render :show
     else
-      render json: { errors: @group.errors.full_messages }, status: :bad_request
+      render json: { errors: @combat.errors.full_messages }, status: :bad_request
     end
   end
 
