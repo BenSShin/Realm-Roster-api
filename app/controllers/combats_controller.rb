@@ -3,9 +3,9 @@ class CombatsController < ApplicationController
 
   def index
     if params[:tab_id]
-      @combats = Combat.where(user_id: current_user.id, tab_id: params[:tab_id])
+      @combats = Combat.order(initiative_roll: :desc).where(user_id: current_user.id, tab_id: params[:tab_id])
     else
-      @combats = Combat.where(user_id: current_user.id)
+      @combats = Combat.order(initiative_roll: :desc).where(user_id: current_user.id)
     end
     render :index
   end
